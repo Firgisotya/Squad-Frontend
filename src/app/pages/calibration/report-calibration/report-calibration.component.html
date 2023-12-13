@@ -1,0 +1,152 @@
+<div class="w-full flex-wrap px-6 py-6 mx-auto flex flex-row">
+  <div class="px-1 md:w-1/2 w-full">
+    <div
+      class="mb-4 p-6 h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <h1 class="text-center text-slate-800 dark:text-white font-bold mb-4 w-full">Type Calibration</h1>
+      <div class="h-full flex flex-col justify-center">
+        <apx-chart
+          *ngIf="chartPie"
+          [series]="chartPie?.seriesTipe"
+          [chart]="chartPie?.chart"
+          [labels]="chartPie?.labelsTipe"
+          [fill]="chartPie?.fill"
+          [dataLabels]="chartPie?.dataLabels"
+          [responsive]="chartPie?.responsive"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="px-1 md:w-1/2 w-full">
+    <div
+      class="mb-4 p-6 h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <h1 class="text-center text-slate-800 dark:text-white font-bold mb-4 w-full">Status Calibration</h1>
+      <div class="h-full flex flex-col justify-center">
+        <apx-chart
+          *ngIf="chartPie"
+          [series]="chartPie?.seriesStatus"
+          [chart]="chartPie?.chart"
+          [labels]="chartPie?.labelsStatus"
+          [fill]="chartPie?.fill"
+          [dataLabels]="chartPie?.dataLabels"
+          [responsive]="chartPie?.responsive"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="px-1 md:w-1/2 w-full">
+    <div
+      class="mb-4 p-6 h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <h1 class="text-center text-slate-800 dark:text-white font-bold mb-4 w-full">Total Calibration</h1>
+      <div class="h-full flex flex-col justify-center">
+        <apx-chart
+          *ngIf="chartAllTrans"
+          [series]="chartAllTrans?.seriesYear"
+          [chart]="chartAllTrans?.chart"
+          [dataLabels]="chartAllTrans?.dataLabels"
+          [plotOptions]="chartAllTrans?.plotOptions"
+          [yaxis]="chartAllTrans?.yaxisYear"
+          [xaxis]="chartAllTrans?.xaxisYear"
+          [fill]="chartAllTrans?.fill"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="px-1 md:w-1/2 w-full">
+    <div
+      class="mb-4 p-6 h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <h1 class="text-center text-slate-800 dark:text-white font-bold mb-4 w-full">Calibration</h1>
+      <div class="h-full flex flex-col justify-center">
+        <apx-chart
+          *ngIf="chartAllTrans"
+          [series]="chartAllTrans?.seriesCategory"
+          [chart]="chartAllTrans?.chart"
+          [dataLabels]="chartAllTrans?.dataLabels"
+          [plotOptions]="chartAllTrans?.plotOptions"
+          [yaxis]="chartAllTrans?.yaxisCategory"
+          [xaxis]="chartAllTrans?.xaxisCategory"
+          [fill]="chartAllTrans?.fill"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="px-1 md:w-1/2 w-full">
+    <div
+      class="mb-4 p-6 h-[550px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <h1 class="text-center text-slate-800 dark:text-white font-bold mb-4 w-full">Calibration Monthly</h1>
+      <div class="w-full">
+        <label
+          for="year"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Select an Year</label
+        >
+       <form [formGroup]="filterYear" (change)="filterByYear()">
+        <select
+        id="year"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        formControlName="year"
+        >
+        <option value="">Choose a Year</option>
+        <option *ngFor="let item of tahun_filter; index as i"
+        ngValue="{{ item }}">{{ item }}</option>
+      </select>
+       </form>
+      </div>
+      <div class="h-full flex flex-col justify-center">
+        <apx-chart
+          *ngIf="chartFilter"
+          [series]="chartFilter?.seriesMonthly"
+          [chart]="chartFilter?.chart"
+          [dataLabels]="chartFilter?.dataLabels"
+          [plotOptions]="chartFilter?.plotOptions"
+          [yaxis]="chartFilter?.yaxisMonthly"
+          [xaxis]="chartFilter?.xaxisMonthly"
+          [fill]="chartFilter?.fill"
+          [colors]="chartFilter?.colors"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="px-1 md:w-1/2 w-full">
+    <div
+      class="mb-4 p-6 h-[550px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <h1 class="text-center text-slate-800 dark:text-white font-bold mb-4 w-full">Calibration Yearly</h1>
+      <div class="w-full">
+        <label
+          for="year"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Select an Year</label
+        >
+       <form [formGroup]="filterMonth" (change)="filterByMonth()">
+        <select
+        id="month"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        formControlName="month"
+        >
+        <option value="">Choose a Month</option>
+        <option *ngFor="let item of month_filter; index as i"
+        ngValue="{{ i + 1 }}">{{ item }}</option>
+      </select>
+       </form>
+      </div>
+      <div class="h-full flex flex-col justify-center">
+        <apx-chart
+          *ngIf="chartFilter"
+          [series]="chartFilter?.seriesYearly"
+          [chart]="chartFilter?.chart"
+          [dataLabels]="chartFilter?.dataLabels"
+          [plotOptions]="chartFilter?.plotOptions"
+          [yaxis]="chartFilter?.yaxisYearly"
+          [xaxis]="chartFilter?.xaxisYearly"
+          [fill]="chartFilter?.fill"
+          [colors]="chartFilter?.colors"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+</div>

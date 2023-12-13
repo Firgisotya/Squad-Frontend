@@ -1,0 +1,23 @@
+<nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start" navbar-main navbar-scroll="false">
+    <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+      <nav>
+        <ol class="flex flex-col pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+          <li *ngFor="let breadcrumb of breadcrumbs;index as i" class="text-sm leading-normal ">
+            <p *ngIf="breadcrumb.url"  class="w-full text-white text-md"> <span *ngIf="breadcrumbs.length > 1 &&  i == 0 ">{{ breadcrumb.label + ' / ' }}</span><span *ngIf="breadcrumbs.length == 1">{{ breadcrumb.label }}</span> </p>
+            <p *ngIf="breadcrumb.url && breadcrumbs.length > 1 &&  i == 1 "  class="w-full text-white text-lg font-bold">{{ breadcrumb.label }} </p>
+          </li>
+        </ol>
+      </nav>
+  
+  
+  
+      <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+        <div class="flex items-center md:ml-auto md:pr-4">
+          
+        </div>
+        <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
+  
+        </ul>
+      </div>
+    </div>
+  </nav>

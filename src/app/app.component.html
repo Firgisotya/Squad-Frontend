@@ -1,0 +1,22 @@
+<div class="font-sans text-base antialiased font-normal leading-default text-slate-500">
+
+  <!-- Navbar -->
+  <app-navbar *ngIf="!router.url.includes('print-calibration') && !router.url.includes('login')"></app-navbar>
+  
+   
+  <!-- sidenav  -->
+  <app-sidebar *ngIf="!router.url.includes('print-calibration') && !router.url.includes('login')" ></app-sidebar>
+
+  <!-- end sidenav -->
+
+
+  <main [ngClass]="!router.url.includes('login')? 'xl:ml-68 rounded-xl' : ''" class="relative h-full max-h-screen transition-all duration-200 ease-in-out">
+
+    <app-breadcrumb *ngIf="!router.url.includes('print-calibration') && !router.url.includes('login')"></app-breadcrumb>
+   
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+</div>

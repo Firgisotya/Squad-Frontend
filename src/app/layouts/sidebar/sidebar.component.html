@@ -1,0 +1,649 @@
+<aside
+  class="fixed my-auto inset-y-0 flex-wrap items-center justify-between block w-full p-3 overflow-y-auto antialiased transition-transform duration-200 -translate-x-full bg-white border-0 shadow-2xl dark:shadow-none dark:bg-gray-800 max-w-64 ease-nav-brand z-990 xl:ml-0 xl:left-0 xl:translate-x-0"
+  aria-expanded="false"
+>
+  <div class="h-20 mb-6">
+    <i
+      class="absolute top-0 right-0 p-4 opacity-50 cursor-pointer fas fa-times dark:text-white text-slate-400 xl:hidden"
+      sidenav-close
+    ></i>
+    <a
+      class="block px-2 m-0 text-sm whitespace-nowrap dark:text-white text-slate-700"
+      href="https://demos.creative-tim.com/argon-dashboard-tailwind/pages/dashboard.html"
+      target="_blank"
+    >
+      <img
+        src="assets/img/logo.png"
+        class="inline h-full w-full transition-all duration-200 dark:hidden ease-nav-brand"
+        alt="main_logo"
+      />
+      <img
+        src="assets/img/logo.png"
+        class="hidden h-full w-full transition-all duration-200 dark:inline ease-nav-brand"
+        alt="main_logo"
+      />
+      <!-- <span
+        class="ml-1 font-semibold transition-all duration-200 ease-nav-brand"
+        >Smart Quality Dashboard</span -->
+    </a>
+  </div>
+
+  <hr
+    class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent"
+  />
+
+  <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
+    <ul class="flex flex-col pl-0 mb-0">
+      <li class="mt-0.5 w-full">
+        <a
+          class="py-2 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
+          routerLink=""
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [ngClass]="router.url === '/' ? 'bg-blue-500/13' : ''"
+        >
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2"
+          >
+            <svg
+              class="w-6 h-6 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"
+              />
+            </svg>
+          </div>
+          <span
+            class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+            >Dashboard</span
+          >
+        </a>
+      </li>
+
+      <li class="mt-0.5 w-full">
+        <div
+          class="flex justify-between items-center"
+          (click)="toogleFlowReleaseSubMenu()"
+        >
+          <a
+            class="py-2 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
+          >
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2"
+            >
+              <svg
+                class="text-gray-800 dark:text-white"
+                id="Layer_1_1_"
+                fill="currentColor"
+                style="enable-background: new 0 0 64 64"
+                version="1.1"
+                viewBox="0 0 64 64"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M38.303,25.015C38.761,23.365,39,21.684,39,20C39,9.523,30.477,1,20,1S1,9.523,1,20c0,10.373,8.359,18.819,18.694,18.984   C19.254,40.585,19,42.262,19,44c0,10.477,8.523,19,19,19s19-8.523,19-19C57,33.626,48.639,25.18,38.303,25.015z M20,37   c-9.374,0-17-7.626-17-17S10.626,3,20,3s17,7.626,17,17c0,1.711-0.283,3.419-0.813,5.092c-0.756,0.072-1.497,0.192-2.225,0.35   C34.64,23.708,35,21.862,35,20c0-8.271-6.729-15-15-15S5,11.729,5,20c0,3.601,1.307,7.089,3.679,9.821l1.51-1.311   C8.354,26.396,7.26,23.76,7.045,21H11v-2H7.051c0.054-0.701,0.165-1.385,0.326-2.05l3.755,1.22l0.617-1.902l-3.763-1.222   c0.267-0.644,0.592-1.256,0.954-1.844l3.19,2.317l1.176-1.617l-3.194-2.32c0.45-0.528,0.941-1.018,1.468-1.468l2.32,3.194   l1.617-1.176l-2.317-3.19c0.587-0.363,1.2-0.688,1.844-0.954l1.222,3.763l1.902-0.617l-1.22-3.755   c0.666-0.161,1.349-0.272,2.05-0.326V11h2V7.051c0.701,0.054,1.385,0.165,2.05,0.326l-1.22,3.755l1.902,0.617l1.222-3.763   c0.644,0.267,1.256,0.592,1.844,0.954l-2.317,3.19l1.617,1.176l2.32-3.194c0.528,0.45,1.018,0.941,1.468,1.468l-3.194,2.32   l1.176,1.617l3.19-2.317c0.363,0.587,0.688,1.2,0.954,1.844l-3.763,1.222l0.617,1.902l3.755-1.22   c0.161,0.666,0.272,1.349,0.326,2.05H29v2h3.957c-0.142,1.816-0.673,3.592-1.554,5.205c-3.463,1.288-6.445,3.552-8.619,6.465   C21.841,32.879,20.904,33,20,33c-3.119,0-6.142-1.133-8.511-3.188l-1.311,1.51C12.911,33.693,16.399,35,20,35   c0.433,0,0.876-0.042,1.317-0.083c-0.363,0.664-0.675,1.358-0.958,2.067C20.24,36.99,20.121,37,20,37z M38,61   c-9.374,0-17-7.626-17-17s7.626-17,17-17s17,7.626,17,17S47.374,61,38,61z"
+                  />
+                  <path
+                    d="M38,29c-8.271,0-15,6.729-15,15v1h8v-1c0-3.859,3.141-7,7-7c1.799,0,3.436,0.688,4.677,1.807l-4.732,14.198   C36.317,53.036,35,54.365,35,56c0,1.654,1.346,3,3,3s3-1.346,3-3c0-0.958-0.46-1.804-1.162-2.353L44.16,40.68   C44.695,41.669,45,42.799,45,44v1h8v-1C53,35.729,46.271,29,38,29z M38,57c-0.552,0-1-0.448-1-1s0.448-1,1-1s1,0.448,1,1   S38.552,57,38,57z M46.944,43c-0.197-1.772-0.916-3.386-1.992-4.697l0.996-2.987l-1.896-0.633l-0.697,2.09   C41.858,35.661,40.005,35,38,35c-4.625,0-8.445,3.506-8.944,8h-4.018c0.513-6.703,6.13-12,12.962-12s12.449,5.297,12.962,12H46.944   z"
+                  />
+                  <path d="M55,5h-8v6h8V5z M53,9h-4V7h4V9z" />
+                  <path
+                    d="M62.121,7.707L59,4.586V4c0-1.654-1.346-3-3-3H46c-1.654,0-3,1.346-3,3v13.184c-1.161,0.414-2,1.514-2,2.816v3h20v-3   c0-1.302-0.839-2.402-2-2.816V16h1c1.654,0,3-1.346,3-3V9.828C63,9.027,62.688,8.273,62.121,7.707z M46,3h10c0.552,0,1,0.448,1,1   v13H45V4C45,3.448,45.448,3,46,3z M59,21H43v-1c0-0.552,0.448-1,1-1h14c0.552,0,1,0.448,1,1V21z M61,13c0,0.552-0.448,1-1,1h-1   V7.414l1.707,1.707C60.894,9.308,61,9.565,61,9.828V13z"
+                  />
+                  <path
+                    d="M20,31c1.654,0,3-1.346,3-3c0-1.302-0.839-2.402-2-2.816V15h-2v10.184c-1.161,0.414-2,1.514-2,2.816   C17,29.654,18.346,31,20,31z M20,27c0.552,0,1,0.448,1,1s-0.448,1-1,1s-1-0.448-1-1S19.448,27,20,27z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <span
+              class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+              >Flow Release</span
+            >
+          </a>
+          <div class="px-2">
+            <svg
+              class="text-gray-800 dark:text-white"
+              fill="currentColor"
+              [ngClass]="isFlowReleaseSubMenu ? 'rotate-180' : ''"
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Submenu -->
+        <ul *ngIf="isFlowReleaseSubMenu" class="ml-8">
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/flow-release/flow-release-oci1"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/flow-release/flow-release-oci1'
+                  ? 'bg-blue-500/13'
+                  : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                  class="text-gray-800 dark:text-white"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Flow Release OC1</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/flow-release/flow-release-oci2"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/flow-release/flow-release-oci2'
+                  ? 'bg-blue-500/13'
+                  : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                  class="text-gray-800 dark:text-white"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Flow Release OC2</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/flow-release/flow-release-fsb"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/flow-release/flow-release-fsb'
+                  ? 'bg-blue-500/13'
+                  : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                  class="text-gray-800 dark:text-white"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Flow Release FSB</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/flow-release/grafik-flow-release"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/flow-release/grafik-flow-release'
+                  ? 'bg-blue-500/13'
+                  : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                  class="text-gray-800 dark:text-white"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Grafik Flow Release</span
+              >
+            </a>
+          </li>
+        </ul>
+        <!-- end submenu -->
+      </li>
+
+      
+
+      <li class="mt-0.5 w-full">
+        <div
+          class="flex justify-between items-center"
+          (click)="toogleInspeksiSubMenu()"
+        >
+          <a
+            class="py-2 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
+          >
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2"
+            >
+              <svg
+              class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                data-name="Layer 1"
+                viewBox="0 0 64 64"
+                id="assessments"
+              >
+                <path
+                  d="M25.46,11.36a12.2,12.2,0,1,0,17.25,0A12.22,12.22,0,0,0,25.46,11.36ZM41.34,27.24a10.26,10.26,0,1,1,0-14.51A10.27,10.27,0,0,1,41.34,27.24Z"
+                ></path>
+                <path
+                  d="M62.2,40.74l0,0-8.76-8.26V5.94a1,1,0,0,0-1-1H46.6V1a1,1,0,0,0-1-1H1.37a1,1,0,0,0-1,1V58.06a1,1,0,0,0,1,1H7.22v4a1,1,0,0,0,1,1H52.46a1,1,0,0,0,1-1V45.56l2,1.93a4.76,4.76,0,0,0,3.37,1.4,4.67,4.67,0,0,0,3.27-1.33,4.78,4.78,0,0,0,.47-.54A4.71,4.71,0,0,0,62.2,40.74ZM46.6,9V6.91h4.89V30.63l-.33-.31a1,1,0,0,0-1.35,0l-.28.27L47.89,29A16.45,16.45,0,0,0,46.55,9.23,1.19,1.19,0,0,0,46.6,9Zm1.56,23-2.07,2.07-1.44-1.44c.37-.31.74-.63,1.09-1s.67-.72,1-1.09Zm.47-12A14.53,14.53,0,1,1,44.37,9.7,14.48,14.48,0,0,1,48.63,20ZM2.34,57.09V1.94H44.66V7.36a16.48,16.48,0,0,0-22.23,1A16.48,16.48,0,0,0,43.08,33.79l1.64,1.64-.28.27a1,1,0,0,0-.29.7,1,1,0,0,0,.31.7l.2.18V57.09Zm49.15,5H9.16V59H45.63a1,1,0,0,0,1-1v-19l4.89,4.62Zm9.58-16.25a4.27,4.27,0,0,1-.37.41,2.77,2.77,0,0,1-3.88-.12l-10.3-9.73,4-4,1.26,1.18,9.07,8.56A2.79,2.79,0,0,1,61.07,45.81Z"
+                ></path>
+                <path
+                  d="M36.75 38.51H10.24a1 1 0 0 0 0 1.94H36.75a1 1 0 0 0 0-1.94zM36.75 44.27H10.24a1 1 0 0 0 0 1.94H36.75a1 1 0 0 0 0-1.94zM36.75 50H10.24a1 1 0 0 0 0 1.94H36.75a1 1 0 0 0 0-1.94z"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+              >Inspeksi FSB</span
+            >
+          </a>
+          <div class="px-2">
+            <svg
+            class="text-gray-800 dark:text-white"
+              fill="currentColor"
+              [ngClass]="isInspeksiSubMenu ? 'rotate-180' : ''"
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Submenu -->
+        <ul *ngIf="isInspeksiSubMenu" class="ml-8">
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/inspeksi/rejection"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/inspeksi/rejection' ? 'bg-blue-500/13' : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Rejection</span
+              >
+            </a>
+          </li>
+        </ul>
+        <!-- end submenu -->
+      </li>
+
+      <li class="mt-0.5 w-full">
+        <div
+          class="flex justify-between items-center"
+          (click)="toogleCalibrationSubMenu()"
+        >
+          <a
+            class="py-2 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
+          >
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2"
+            >
+              <svg
+              class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                id="Layer_1_1_"
+                style="enable-background: new 0 0 64 64"
+                version="1.1"
+                viewBox="0 0 64 64"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <g>
+                  <path
+                    d="M38.303,25.015C38.761,23.365,39,21.684,39,20C39,9.523,30.477,1,20,1S1,9.523,1,20c0,10.373,8.359,18.819,18.694,18.984   C19.254,40.585,19,42.262,19,44c0,10.477,8.523,19,19,19s19-8.523,19-19C57,33.626,48.639,25.18,38.303,25.015z M20,37   c-9.374,0-17-7.626-17-17S10.626,3,20,3s17,7.626,17,17c0,1.711-0.283,3.419-0.813,5.092c-0.756,0.072-1.497,0.192-2.225,0.35   C34.64,23.708,35,21.862,35,20c0-8.271-6.729-15-15-15S5,11.729,5,20c0,3.601,1.307,7.089,3.679,9.821l1.51-1.311   C8.354,26.396,7.26,23.76,7.045,21H11v-2H7.051c0.054-0.701,0.165-1.385,0.326-2.05l3.755,1.22l0.617-1.902l-3.763-1.222   c0.267-0.644,0.592-1.256,0.954-1.844l3.19,2.317l1.176-1.617l-3.194-2.32c0.45-0.528,0.941-1.018,1.468-1.468l2.32,3.194   l1.617-1.176l-2.317-3.19c0.587-0.363,1.2-0.688,1.844-0.954l1.222,3.763l1.902-0.617l-1.22-3.755   c0.666-0.161,1.349-0.272,2.05-0.326V11h2V7.051c0.701,0.054,1.385,0.165,2.05,0.326l-1.22,3.755l1.902,0.617l1.222-3.763   c0.644,0.267,1.256,0.592,1.844,0.954l-2.317,3.19l1.617,1.176l2.32-3.194c0.528,0.45,1.018,0.941,1.468,1.468l-3.194,2.32   l1.176,1.617l3.19-2.317c0.363,0.587,0.688,1.2,0.954,1.844l-3.763,1.222l0.617,1.902l3.755-1.22   c0.161,0.666,0.272,1.349,0.326,2.05H29v2h3.957c-0.142,1.816-0.673,3.592-1.554,5.205c-3.463,1.288-6.445,3.552-8.619,6.465   C21.841,32.879,20.904,33,20,33c-3.119,0-6.142-1.133-8.511-3.188l-1.311,1.51C12.911,33.693,16.399,35,20,35   c0.433,0,0.876-0.042,1.317-0.083c-0.363,0.664-0.675,1.358-0.958,2.067C20.24,36.99,20.121,37,20,37z M38,61   c-9.374,0-17-7.626-17-17s7.626-17,17-17s17,7.626,17,17S47.374,61,38,61z"
+                  />
+                  <path
+                    d="M38,29c-8.271,0-15,6.729-15,15v1h8v-1c0-3.859,3.141-7,7-7c1.799,0,3.436,0.688,4.677,1.807l-4.732,14.198   C36.317,53.036,35,54.365,35,56c0,1.654,1.346,3,3,3s3-1.346,3-3c0-0.958-0.46-1.804-1.162-2.353L44.16,40.68   C44.695,41.669,45,42.799,45,44v1h8v-1C53,35.729,46.271,29,38,29z M38,57c-0.552,0-1-0.448-1-1s0.448-1,1-1s1,0.448,1,1   S38.552,57,38,57z M46.944,43c-0.197-1.772-0.916-3.386-1.992-4.697l0.996-2.987l-1.896-0.633l-0.697,2.09   C41.858,35.661,40.005,35,38,35c-4.625,0-8.445,3.506-8.944,8h-4.018c0.513-6.703,6.13-12,12.962-12s12.449,5.297,12.962,12H46.944   z"
+                  />
+                  <path d="M55,5h-8v6h8V5z M53,9h-4V7h4V9z" />
+                  <path
+                    d="M62.121,7.707L59,4.586V4c0-1.654-1.346-3-3-3H46c-1.654,0-3,1.346-3,3v13.184c-1.161,0.414-2,1.514-2,2.816v3h20v-3   c0-1.302-0.839-2.402-2-2.816V16h1c1.654,0,3-1.346,3-3V9.828C63,9.027,62.688,8.273,62.121,7.707z M46,3h10c0.552,0,1,0.448,1,1   v13H45V4C45,3.448,45.448,3,46,3z M59,21H43v-1c0-0.552,0.448-1,1-1h14c0.552,0,1,0.448,1,1V21z M61,13c0,0.552-0.448,1-1,1h-1   V7.414l1.707,1.707C60.894,9.308,61,9.565,61,9.828V13z"
+                  />
+                  <path
+                    d="M20,31c1.654,0,3-1.346,3-3c0-1.302-0.839-2.402-2-2.816V15h-2v10.184c-1.161,0.414-2,1.514-2,2.816   C17,29.654,18.346,31,20,31z M20,27c0.552,0,1,0.448,1,1s-0.448,1-1,1s-1-0.448-1-1S19.448,27,20,27z"
+                  />
+                </g>
+              </svg>
+            </div>
+            <span
+              class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+              >Calibration</span
+            >
+          </a>
+          <div class="px-2">
+            <svg
+            class="text-gray-800 dark:text-white"
+              fill="currentColor"
+              [ngClass]="isCalibrationSubMenu ? 'rotate-180' : ''"
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Submenu -->
+        <ul *ngIf="isCalibrationSubMenu" class="ml-8">
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/calibration/pending-task"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/calibration/pending-task'
+                  ? 'bg-blue-500/13'
+                  : ''
+              "
+            >
+              <div
+                class="flex px-2 h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Pending Task <br />
+                Calibration</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/calibration/report-calibration"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/calibration/report-calibration'
+                  ? 'bg-blue-500/13'
+                  : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Report Calibration</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/calibration/result-calibration"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/calibration/result-calibration'
+                  ? 'bg-blue-500/13'
+                  : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >Result Calibration</span
+              >
+            </a>
+          </li>
+        </ul>
+        <!-- end submenu -->
+      </li>
+      <li class="mt-0.5 w-full">
+        <a
+          class="py-2 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
+          routerLink="/bpd"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [ngClass]="router.url === '/bpd' ? 'bg-blue-500/13' : ''"
+        >
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2"
+          >
+            <svg
+            class="text-gray-800 dark:text-white"
+              enable-background="new 0 0 64 64"
+              height="64px"
+              id="Layer_1"
+              version="1.1"
+              viewBox="0 0 64 64"
+              width="64px"
+              xml:space="preserve"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <g id="analysis">
+                <g>
+                  <g>
+                    <g>
+                      <path
+                        d="M11,17v43h49V17H11z M59,59H12V27h47V59z M59,26H12v-8h47V26z"
+                        fill="currentColor"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="M36,7v4h14V7H36z M49,10H37V8h12V10z"
+                        fill="currentColor"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M19,7v4h4V7H19z M22,10h-2V8h2V10z"
+                        fill="currentColor"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M13,7v4h4V7H13z M16,10h-2V8h2V10z"
+                        fill="currentColor"
+                      />
+                    </g>
+                    <g>
+                      <path d="M7,7v4h4V7H7z M10,10H8V8h2V10z" fill="currentColor" />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="M43,20v4h14v-4H43z M56,23H44v-2h12V23z"
+                        fill="currentColor"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M26,20v4h4v-4H26z M29,23h-2v-2h2V23z"
+                        fill="currentColor"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M20,20v4h4v-4H20z M23,23h-2v-2h2V23z"
+                        fill="currentColor"
+                      />
+                    </g>
+                    <g>
+                      <path
+                        d="M14,20v4h4v-4H14z M17,23h-2v-2h2V23z"
+                        fill="currentColor"
+                      />
+                    </g>
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M53.866,33.062l0.732-1.24L54,29.5l-2.322,0.598l-0.732,1.24l1.637-0.422l-6.258,10.598     C45.972,41.198,45.51,41,45,41c-0.413,0-0.797,0.126-1.116,0.341l-3.362-4.059C40.816,36.934,41,36.49,41,36c0-1.103-0.897-2-2-2     s-2,0.897-2,2c0,0.495,0.187,0.942,0.486,1.292l-5.074,8.752C32.279,46.016,32.141,46,32,46c-0.413,0-0.797,0.126-1.117,0.341     l-3.961-2.82C26.968,43.354,27,43.182,27,43c0-1.103-0.897-2-2-2s-2,0.897-2,2c0,0.273,0.056,0.534,0.155,0.771l-5.649,8.301     C17.344,52.03,17.176,52,17,52c-1.103,0-2,0.897-2,2s0.897,2,2,2s2-0.897,2-2c0-0.565-0.238-1.074-0.617-1.438l5.422-7.967     C24.14,44.846,24.55,45,25,45c0.559,0,1.064-0.232,1.427-0.603l3.797,2.703C30.085,47.371,30,47.674,30,48c0,1.103,0.897,2,2,2     s2-0.897,2-2c0-0.602-0.273-1.137-0.695-1.503l5.002-8.627C38.524,37.95,38.755,38,39,38c0.25,0,0.487-0.051,0.708-0.136     l3.513,4.242C43.084,42.376,43,42.677,43,43c0,1.103,0.897,2,2,2s2-0.897,2-2c0-0.184-0.033-0.358-0.08-0.528l6.524-11.048     L53.866,33.062z M17,55c-0.551,0-1-0.449-1-1s0.449-1,1-1s1,0.449,1,1S17.551,55,17,55z M25,44c-0.551,0-1-0.449-1-1s0.449-1,1-1     s1,0.449,1,1S25.551,44,25,44z M32,49c-0.551,0-1-0.449-1-1s0.449-1,1-1s1,0.449,1,1S32.551,49,32,49z M38,36     c0-0.551,0.449-1,1-1s1,0.449,1,1s-0.449,1-1,1S38,36.551,38,36z M45,44c-0.551,0-1-0.449-1-1s0.449-1,1-1s1,0.449,1,1     S45.551,44,45,44z"
+                      fill="currentColor"
+                    />
+                  </g>
+                </g>
+                <path
+                  d="M10,46H5V14h47v2h1V4H4v43h6V46z M5,5h47v8H5V5z"
+                  fill="currentColor"
+                />
+              </g>
+            </svg>
+          </div>
+          <span
+            class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+            >Data Analisis BPD</span
+          >
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 p-4">
+    <div class="mx-4">
+      <app-switch></app-switch>
+    </div>
+  </div>
+  
+</aside>

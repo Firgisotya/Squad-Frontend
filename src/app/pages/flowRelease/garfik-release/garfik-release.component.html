@@ -1,0 +1,105 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-pulse"
+>
+  <!-- <p style="font-size: 20px; color: white">Loading...</p> -->
+</ngx-spinner>
+
+<div class="w-full px-6 py-6 mx-auto">
+  <div
+    class="w-full overflow-x-auto mb-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+    <form [formGroup]="filterDate" (ngSubmit)="filterRangeDate()" class="">
+      <div class="flex space-x-2">
+        <div class="p-2">
+          <label
+            for="datepicker"
+            class="text-sm font-semibold text-gray-700 dark:text-gray-200"
+            >Start Date</label
+          >
+          <input
+            type="date"
+            class="rounded-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-40 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            id="datepicker"
+            formControlName="startDate"
+          />
+        </div>
+        <div class="p-2">
+          <label
+            for="datepicker"
+            class="text-sm font-semibold text-gray-700 dark:text-gray-200"
+            >End Date</label
+          >
+          <input
+            type="date"
+            class="rounded-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-40 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            id="datepicker"
+            formControlName="endDate"
+          />
+        </div>
+        <!-- button submit filter -->
+        <div class="p-2 flex justify-end items-end">
+          <button
+            type="submit"
+            class="h-fit items-center justify-center px-8 py-2.5 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Filter
+          </button>
+        </div>
+
+        <div class="p-2 flex justify-end items-end">
+          <button
+            type="submit"
+            class="h-fit items-center justify-center px-8 py-2.5 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            (click)="resetFilter()"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- <canvas width="1200px" id="canvasRejection"></canvas> -->
+
+    <apx-chart
+      [series]="chartRelease.seriesOci1"
+      [chart]="chartRelease.chart"
+      [xaxis]="chartRelease.xaxisOci1"
+      [dataLabels]="chartRelease.dataLabels"
+      [grid]="chartRelease.grid"
+      [stroke]="chartRelease.stroke"
+      [title]="chartRelease.titleOci1"
+    ></apx-chart>
+  </div>
+
+  <div
+    class="w-full overflow-x-auto mb-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+    <!-- <canvas width="1200px" id="canvasRejection"></canvas> -->
+    <apx-chart
+      [series]="chartRelease.seriesOci2"
+      [chart]="chartRelease.chart"
+      [xaxis]="chartRelease.xaxisOci2"
+      [dataLabels]="chartRelease.dataLabels"
+      [grid]="chartRelease.grid"
+      [stroke]="chartRelease.stroke"
+      [title]="chartRelease.titleOci2"
+    ></apx-chart>
+  </div>
+
+  <div
+    class="w-full overflow-x-auto mb-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+    <!-- <canvas width="1200px" id="canvasRejection"></canvas> -->
+    <apx-chart
+      [series]="chartRelease.seriesFsb"
+      [chart]="chartRelease.chart"
+      [xaxis]="chartRelease.xaxisFsb"
+      [dataLabels]="chartRelease.dataLabels"
+      [grid]="chartRelease.grid"
+      [stroke]="chartRelease.stroke"
+      [title]="chartRelease.titleFsb"
+    ></apx-chart>
+  </div>
+</div>

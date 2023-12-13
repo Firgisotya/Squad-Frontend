@@ -1,0 +1,126 @@
+<div class="w-full px-6 py-6 mx-auto">
+  <div
+    class="w-full mb-4 bg-white border overflow-x-scroll border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+    <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-xl"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">No</th>
+          <th scope="col" class="px-6 py-3">Transaction</th>
+          <th scope="col" class="px-6 py-3">Internal or External</th>
+          <th scope="col" class="px-6 py-3">No. Dokumen</th>
+          <th scope="col" class="px-6 py-3">Equipment Name</th>
+          <th scope="col" class="px-6 py-3">Category</th>
+          <th scope="col" class="px-6 py-3">Brand</th>
+          <th scope="col" class="px-6 py-3">Serial Number</th>
+          <th scope="col" class="px-6 py-3">Departement</th>
+          <th scope="col" class="px-6 py-3">Area</th>
+          <th scope="col" class="px-6 py-3">Area Detail</th>
+          <th scope="col" class="px-6 py-3">Date Calibration</th>
+          <th scope="col" class="px-6 py-3">Expired Calibration</th>
+          <th scope="col" class="px-6 py-3">Date Release Certificate</th>
+          <th scope="col" class="px-6 py-3">Requestor</th>
+          <th scope="col" class="px-6 py-3">PIC</th>
+          <th scope="col" class="px-6 py-3">Model</th>
+          <th scope="col" class="px-6 py-3">Equipment Condition</th>
+          <th scope="col" class="px-6 py-3">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of data; index as i"
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+        >
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ i + 1 }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div *ngIf="item.reg_or_recal == 1">Registrasi</div>
+            <div *ngIf="item.reg_or_recal == 2">Recalibrasi</div>
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div>
+              <div *ngIf="item.in_or_ex == 1">Internal</div>
+              <div *ngIf="item.in_or_ex == 2">External</div>
+              <div *ngIf="item.in_or_ex == 3">Verification</div>
+            </div>
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.no_dok }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.equipment_name }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.category }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.brand }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.serial_number }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div *ngIf="item.departement == null; else departement">NULL</div>
+            <ng-template #departement>{{ item.departement }}</ng-template>
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.area }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.location_detail }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.tanggal_calibration }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.exp_calibration }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.tanggal_release_certificate }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.requestor }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.pic_input }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.model }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.kondisi_alat }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div>
+              <div *ngIf="item.isactive == 1">
+                <span
+                  class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 dark:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-0 bg-green-500 rounded-full opacity-50"
+                  >
+                  </span>
+                  <span class="relative"> active </span>
+                </span>
+              </div>
+              <div *ngIf="item.isactive == 0">
+                <span
+                  class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 dark:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-0 bg-red-500 rounded-full opacity-50"
+                  >
+                  </span>
+                  <span class="relative"> Inactive </span>
+                </span>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="data.length == 0">
+          <td colspan="19" class="px-6 py-4 font-medium text-gray-900 dark:text-white text-center">
+            No Data
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

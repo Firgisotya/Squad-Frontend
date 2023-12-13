@@ -1,0 +1,137 @@
+<div class="w-full px-6 py-6 mx-auto">
+  <div
+    class="w-full mb-4 bg-white border overflow-x-scroll border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+  <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-xl"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      >
+        <tr>
+          <th scope="col" class="px-6 py-3">No</th>
+          <th scope="col" class="px-6 py-3">Transaction</th>
+          <th scope="col" class="px-6 py-3">Internal or External</th>
+          <th scope="col" class="px-6 py-3">No. Dokumen</th>
+          <th scope="col" class="px-6 py-3">Equipment Name</th>
+          <th scope="col" class="px-6 py-3">Category</th>
+          <th scope="col" class="px-6 py-3">Brand</th>
+          <th scope="col" class="px-6 py-3">Serial Number</th>
+          <th scope="col" class="px-6 py-3">Departement</th>
+          <th scope="col" class="px-6 py-3">Area</th>
+          <th scope="col" class="px-6 py-3">Area Detail</th>
+          <th scope="col" class="px-6 py-3">Date Calibration</th>
+          <th scope="col" class="px-6 py-3">Expired Calibration</th>
+          <th scope="col" class="px-6 py-3">Date Release Certificate</th>
+          <th scope="col" class="px-6 py-3">Requestor</th>
+          <th scope="col" class="px-6 py-3">PIC</th>
+          <th scope="col" class="px-6 py-3">Model</th>
+          <th scope="col" class="px-6 py-3">Equipment Condition</th>
+          <th scope="col" class="px-6 py-3">Status</th>
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of data; index as i"
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+        >
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ i + 1 }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div *ngIf="item.reg_or_recal == 1">Registrasi</div>
+            <div *ngIf="item.reg_or_recal == 2">Recalibrasi</div>
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div>
+              <div *ngIf="item.in_or_ex == 1">Internal</div>
+              <div *ngIf="item.in_or_ex == 2">External</div>
+              <div *ngIf="item.in_or_ex == 3">Verification</div>
+            </div>
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.no_dok }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.equipment_name }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.category }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.brand }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.serial_number }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div *ngIf="item.departement == null; else departement">NULL</div>
+            <ng-template #departement>{{ item.departement }}</ng-template>
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.area }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.location_detail }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.tanggal_calibration }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.exp_calibration }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.tanggal_release_certificate }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.requestor }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.pic_input }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">{{ item.model }}</td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            {{ item.kondisi_alat }}
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <div>
+              <div *ngIf="item.isactive == 1">
+                <span
+                  class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 dark:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-0 bg-green-500 rounded-full opacity-50"
+                  >
+                  </span>
+                  <span class="relative"> active </span>
+                </span>
+              </div>
+              <div *ngIf="item.isactive == 0">
+                <span
+                  class="relative inline-block px-3 py-1 font-semibold leading-tight text-green-900 dark:text-white"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-0 bg-red-500 rounded-full opacity-50"
+                  >
+                  </span>
+                  <span class="relative"> Inactive </span>
+                </span>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+            <a routerLink="/calibration/print-calibration/{{ item.id }}" class="flex gap-1 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+
+                    <svg fill="white" width="20px" height="20px" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <title>export-solid</title>
+                        <path d="M17,22a1,1,0,0,1,1-1h8V6a2,2,0,0,0-2-2H10.87L4,10.86V30a2,2,0,0,0,2,2H24a2,2,0,0,0,2-2V23H18A1,1,0,0,1,17,22ZM12,12H6v-.32L11.69,6H12Z" class="clr-i-solid clr-i-solid-path-1"></path><path d="M29.32,16.35a1,1,0,0,0-1.41,1.41L31.16,21H26v2h5.19l-3.28,3.28a1,1,0,1,0,1.41,1.41L35,22Z" class="clr-i-solid clr-i-solid-path-2"></path>
+                        <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+                    </svg>
+                    Cetak
+            </a>
+            </td>
+        </tr>
+        <tr *ngIf="data.length == 0">
+          <td colspan="19" class="px-6 py-4 font-medium text-gray-900 dark:text-white text-center">
+            No Data
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+</div>
