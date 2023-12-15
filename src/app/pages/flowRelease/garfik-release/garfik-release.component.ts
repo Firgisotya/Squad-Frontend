@@ -67,6 +67,8 @@ export class GarfikReleaseComponent {
       this.dt_oci1 = data.data.oci1;
       this.dt_oci2 = data.data.oci2;
       this.dt_fsb = data.data.fsb;
+      console.log(this.dt_oci1);
+      
       
       // oci1
       this.dt_oci1.forEach((element: any) => {
@@ -184,7 +186,7 @@ export class GarfikReleaseComponent {
       seriesOci1: [
         {
           name: "Release Day",
-          data: this.y_oci1
+          data: this.y_oci1,
         }
       ],
       seriesOci2: [
@@ -229,6 +231,12 @@ export class GarfikReleaseComponent {
           colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
           opacity: 0.5
         }
+      },
+      yaxis: {
+        title: {
+          text: "Release Day"
+        },
+        min: 0,
       },
       xaxisOci1: {
         categories: this.x_oci1
