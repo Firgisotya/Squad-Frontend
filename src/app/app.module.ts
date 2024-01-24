@@ -10,7 +10,6 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { RejectionComponent } from './pages/inspeksi/rejection/rejection.component';
 import { CalibrationComponent } from './pages/calibration/calibration.component';
 import { PendingTaskComponent } from './pages/calibration/pending-task/pending-task.component';
 import { ReportCalibrationComponent } from './pages/calibration/report-calibration/report-calibration.component';
@@ -28,6 +27,9 @@ import { BreadcrumbComponent } from './layouts/breadcrumb/breadcrumb.component';
 import { SwitchComponent } from './utils/switch/switch.component';
 import { FlowReleaseFsbComponent } from './pages/flowRelease/flow-release-fsb/flow-release-fsb.component';
 import { GarfikReleaseComponent } from './pages/flowRelease/garfik-release/garfik-release.component';
+import { RejectionFSBComponent } from './pages/inspeksi/rejectionFSB/rejectionFSB.component';
+import { RejectionOCI1Component } from './pages/inspeksi/rejection-oci1/rejection-oci1.component';
+import { RejectionOCI2Component } from './pages/inspeksi/rejection-oci2/rejection-oci2.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { GarfikReleaseComponent } from './pages/flowRelease/garfik-release/garfi
     MainComponent,
     NavbarComponent,
     HomeComponent,
-    RejectionComponent,
+    RejectionFSBComponent,
     CalibrationComponent,
     PendingTaskComponent,
     ReportCalibrationComponent,
@@ -49,7 +51,9 @@ import { GarfikReleaseComponent } from './pages/flowRelease/garfik-release/garfi
     BreadcrumbComponent,
     SwitchComponent,
     FlowReleaseFsbComponent,
-    GarfikReleaseComponent
+    GarfikReleaseComponent,
+    RejectionOCI1Component,
+    RejectionOCI2Component
   ],
   imports: [
     BrowserModule,

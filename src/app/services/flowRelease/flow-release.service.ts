@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class FlowReleaseOCI1Service {
+export class FlowReleaseService {
 
   constructor(private http: HttpClient) { }
 

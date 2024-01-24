@@ -305,7 +305,7 @@
             </div>
             <span
               class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
-              >Inspeksi FSB</span
+              >Inspeksi</span
             >
           </a>
           <div class="px-2">
@@ -330,11 +330,11 @@
           <li>
             <a
               class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
-              routerLink="/inspeksi/rejection"
+              routerLink="/inspeksi/OCI1"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
               [ngClass]="
-                router.url === '/inspeksi/rejection' ? 'bg-blue-500/13' : ''
+                router.url === '/inspeksi/OCI1' ? 'bg-blue-500/13' : ''
               "
             >
               <div
@@ -355,7 +355,71 @@
               </div>
               <span
                 class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
-                >Rejection</span
+                >OCI1</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/inspeksi/OCI2"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/inspeksi/OCI2' ? 'bg-blue-500/13' : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >OCI2</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              class="dark:text-white dark:opacity-80 py-2 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+              routerLink="/inspeksi/FSB"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [ngClass]="
+                router.url === '/inspeksi/FSB' ? 'bg-blue-500/13' : ''
+              "
+            >
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center"
+              >
+                <svg
+                class="text-gray-800 dark:text-white"
+              fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="1em"
+                  viewBox="0 0 320 512"
+                >
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+                  />
+                </svg>
+              </div>
+              <span
+                class="ml-1 text-base duration-300 opacity-100 pointer-events-none ease"
+                >FSB</span
               >
             </a>
           </li>

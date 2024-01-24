@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RejectionComponent } from './rejection.component';
+import { RejectionComponent } from './rejectionFSB.component';
 
 describe('RejectionComponent', () => {
   let component: RejectionComponent;

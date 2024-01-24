@@ -18,25 +18,30 @@ import {
 import { NgxSpinnerService } from 'ngx-spinner';
 
 export type ChartOptions = {
-  series: ApexAxisChartSeries;
+  seriesReject: ApexAxisChartSeries;
+  seriesInspeksi: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
-  yaxis: ApexYAxis | ApexYAxis[];
-  title: ApexTitleSubtitle;
-  labels: string[];
+  yaxisReject: ApexYAxis | ApexYAxis[];
+  titleReject: ApexTitleSubtitle;
+  labelsReject: string[];
+  yaxisInspeksi: ApexYAxis | ApexYAxis[];
+  titleInspeksi: ApexTitleSubtitle;
+  labelsInspeksi: string[];
   stroke: any; // ApexStroke;
-  dataLabels: any; // ApexDataLabels;
+  dataLabelsInspeksi: any; // ApexDataLabels;
   fill: ApexFill;
+  colorReject: string[];
   tooltip: ApexTooltip;
   plotOptions: ApexPlotOptions;
 };
 
 @Component({
   selector: 'app-rejection',
-  templateUrl: './rejection.component.html',
-  styleUrls: ['./rejection.component.css']
+  templateUrl: './rejectionFSB.component.html',
+  styleUrls: ['./rejectionFSB.component.css']
 })
-export class RejectionComponent {
+export class RejectionFSBComponent {
 
   constructor(
     private appService: InspeksiService,
@@ -51,6 +56,9 @@ export class RejectionComponent {
   x_rejection: any = [];
   y_rejection: any = [];
   z_rejection: any = [];
+  x_inspeksi: any = [];
+  y_inspeksi: any = [];
+  z_inspeksi: any = [];
   chartRejection: any;
   selectedReason: any;
   selectedProduct: any;
@@ -62,24 +70,27 @@ export class RejectionComponent {
   ngOnInit() {
     this.spinner.show();
     // get all reason
-    this.appService.getAllReason().subscribe((data: any) => {
+    this.appService.getAllReasonFSB().subscribe((data: any) => {
       // console.log(data.data);
       this.dt_reason = data.data;
     });
 
-    this.appService.getAllProdcut().subscribe((data: any) => {
+    this.appService.getAllProdcutFSB().subscribe((data: any) => {
       // console.log(data.data);
       this.dt_product = data.data;
     });
 
     // get rejection data
-    this.appService.getRejection(this.selectedReason, this.selectedProduct, this.selectedStart, this.selectedEnd).subscribe((item: any) => {
-      console.log(item.data);
-      this.dt_rejection = item.data.reverse();
+    this.appService.getRejectionFSB(this.selectedReason, this.selectedProduct, this.selectedStart, this.selectedEnd).subscribe((item: any) => {
+      this.dt_rejection = item.data;
+      console.log(this.dt_rejection);
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.new_lotno);
-        this.y_rejection.push(element.total_reject);
-        this.z_rejection.push(element.defect);
+        this.y_rejection.push(element.total_reject | 0);
+        this.z_rejection.push(element.defect | 0);
+        this.x_inspeksi.push(element.new_lotno);
+        this.y_inspeksi.push(element.qty_inspeksi | 0);
+        this.z_inspeksi.push(element.level_inspeksi | 0);
       });
 
       this.spinner.hide();
@@ -103,7 +114,7 @@ export class RejectionComponent {
     this.selectedStart = this.filterDate.value.start;
     this.selectedEnd = this.filterDate.value.end;
 
-    this.appService.getRejection(this.selectedReason, this.selectedProduct, this.selectedStart, this.selectedEnd).subscribe((data: any) => {
+    this.appService.getRejectionFSB(this.selectedReason, this.selectedProduct, this.selectedStart, this.selectedEnd).subscribe((data: any) => {
       console.log(data.data);
       this.dt_rejection = data.data.reverse();
       this.x_rejection = [];
@@ -111,8 +122,11 @@ export class RejectionComponent {
       this.z_rejection = [];
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.new_lotno);
-        this.y_rejection.push(element.total_reject);
-        this.z_rejection.push(element.defect);
+        this.y_rejection.push(element.total_reject | 0);
+        this.z_rejection.push(element.defect | 0);
+        this.x_inspeksi.push(element.new_lotno);
+        this.y_inspeksi.push(element.qty_inspeksi | 0);
+        this.z_inspeksi.push(element.level_inspeksi | 0);
       });
       this.spinner.hide();
       this.ChartRejection();
@@ -126,7 +140,7 @@ export class RejectionComponent {
     this.selectedStart = '';
     this.selectedEnd = '';
     this.filterDate.reset();
-    this.appService.getRejection(this.selectedReason, this.selectedProduct, this.selectedStart, this.selectedEnd).subscribe((data: any) => {
+    this.appService.getRejectionFSB(this.selectedReason, this.selectedProduct, this.selectedStart, this.selectedEnd).subscribe((data: any) => {
       console.log(data.data);
       this.dt_rejection = data.data.reverse();
       this.x_rejection = [];
@@ -134,8 +148,11 @@ export class RejectionComponent {
       this.z_rejection = [];
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.new_lotno);
-        this.y_rejection.push(element.total_reject);
-        this.z_rejection.push(element.defect);
+        this.y_rejection.push(element.total_reject | 0);
+        this.z_rejection.push(element.defect | 0);
+        this.x_inspeksi.push(element.new_lotno);
+        this.y_inspeksi.push(element.qty_inspeksi | 0);
+        this.z_inspeksi.push(element.level_inspeksi | 0);
       });
       this.spinner.hide();
       this.ChartRejection();
@@ -144,7 +161,7 @@ export class RejectionComponent {
 
   ChartRejection() {
     this.chartReject = {
-        series: [
+        seriesReject: [
           {
             name: "Bar(pcs)",
             type: "column",
@@ -156,6 +173,18 @@ export class RejectionComponent {
             data: this.z_rejection
           }
         ],
+        seriesInspeksi: [
+          {
+            name: "Bar(pcs)",
+            type: "column",
+            data: this.y_inspeksi
+          },
+          {
+            name: "Defect(%)",
+            type: "line",
+            data: this.z_inspeksi
+          }
+        ],
         chart: {
           height: 350,
           type: "line"
@@ -163,8 +192,11 @@ export class RejectionComponent {
         stroke: {
           width: [0, 4]
         },
-        title: {
-          text: "Traffic Sources"
+        titleReject: {
+          text: "Rejection"
+        },
+        titleInspeksi: {
+          text: "Inspection"
         },
         plotOptions: {
           bar: {
@@ -173,7 +205,7 @@ export class RejectionComponent {
             }
           }
         },
-        dataLabels: {
+        dataLabelsReject: {
           enabled: true,
           enabledOnSeries: [1],
           background: {
@@ -188,11 +220,26 @@ export class RejectionComponent {
             return val.toFixed(1) + "%";
           }
         },
-        labels: this.x_rejection,
-        // xaxis: {
-        //   type: ""
-        // },
-        yaxis: [
+        dataLabelsInspeksi: {
+          enabled: true,
+          enabledOnSeries: [1],
+          background: {
+            enabled: true,
+            foreColor: "#000",
+            padding: 4,
+            borderRadius: 2,
+            borderWidth: 1,
+            borderColor: "#fff"
+          },
+          formatter: function(val: any, opts: any) {
+            return val.toFixed(1) + "%";
+          }
+        },
+        labelsReject: this.x_rejection,
+        labelsInspeksi: this.x_rejection,
+        colorReject: ["#008FFB", "#00E396"],
+        colorInspeksi: ["#008FFB", "#faf607"],
+        yaxisReject: [
           {
             title: {
               text: "Bar(pcs)"
@@ -207,6 +254,29 @@ export class RejectionComponent {
             opposite: true,
             title: {
               text: "Defect(%)"
+            },
+            labels: {
+              formatter: function(val: any) {
+                return val.toFixed(1) + "%";
+              }
+            }
+          }
+        ],
+        yaxisInspeksi: [
+          {
+            title: {
+              text: "Bar(pcs)"
+            },
+            labels: {
+              formatter: function(val: any) {
+                return val.toFixed(0);
+              }
+            }
+          },
+          {
+            opposite: true,
+            title: {
+              text: "Inspect(%)"
             },
             labels: {
               formatter: function(val: any) {

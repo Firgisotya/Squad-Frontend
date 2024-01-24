@@ -8,7 +8,7 @@ export class BpdService {
 
   constructor(private http: HttpClient) { }
 
-  // private baseUrl = "http://localhost:3100";
+  // private baseUrl = "http://localhost:3116";
   private baseUrl = "http://192.168.9.47:3116";
 
   getBPDOC1Hour: any = () => {
@@ -26,4 +26,9 @@ export class BpdService {
   getBoundaryOC2: any = () => {
     return this.http.get(`${this.baseUrl}/bpd/boundary-oc2`);
   }
+
+  bot_BPD: any = (min: any, date: any, line: any) => {
+    return this.http.post(`${this.baseUrl}/bpd/bot-BPD`, { min, date, line });
+  }
+
 }

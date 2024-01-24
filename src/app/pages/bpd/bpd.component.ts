@@ -103,6 +103,18 @@ export class BpdComponent {
 
       }
 
+      // send notif
+       const lastLabel = labels[labels.length - 1];
+       const minForecast = forecastData[forecastData.length - 1];
+       const line = 'OC1';
+       if (minForecast > this.upper_oc1[0] || minForecast < this.lower_oc1[0]) {
+
+         this.appService.bot_BPD(minForecast, lastLabel, line).subscribe((data: any) => {
+            console.log(data);
+          });
+       }
+       
+
       this.chart_oc1 = new Chart('chartPredictOC1', {
         type: 'line',
             data: {
@@ -215,6 +227,17 @@ export class BpdComponent {
         console.log(i);
         labels.push(format(date, 'yyyy-MM-dd HH:mm'));
 
+      }
+
+      // send notif
+      const lastLabel = labels[labels.length - 1];
+      const minForecast = forecastData[forecastData.length - 1];
+      const line = 'OC2';
+      if (minForecast > this.upper_oc1[0] || minForecast < this.lower_oc1[0]) {
+
+        this.appService.bot_BPD(minForecast, lastLabel, line).subscribe((data: any) => {
+           console.log(data);
+         });
       }
 
       this.chart_oc2 = new Chart('chartPredictOC2', {

@@ -11,16 +11,24 @@ export class InspeksiService {
   // private baseUrl = "http://localhost:3116";
   private baseUrl = "http://192.168.9.47:3116";
 
-  getAllReason: any = () => {
-    return this.http.get(`${this.baseUrl}/inspeksi/reason`);
+  getAllReasonFSB: any = () => {
+    return this.http.get(`${this.baseUrl}/inspeksi/reasonFSB`);
   }
 
-  getAllProdcut: any = () => {
-    return this.http.get(`${this.baseUrl}/inspeksi/product`);
+  getAllProdcutFSB: any = () => {
+    return this.http.get(`${this.baseUrl}/inspeksi/productFSB`);
   }
 
-  getRejection: any = (reason: any, varian: any, start: any, end: any) => {
-    return this.http.post(`${this.baseUrl}/inspeksi/rejection`, {reason: reason, varian: varian, startDate: start, endDate: end});
+  getRejectionFSB: any = (reason: any, varian: any, start: any, end: any) => {
+    return this.http.post(`${this.baseUrl}/inspeksi/rejectionFSB`, {reason: reason, varian: varian, startDate: start, endDate: end});
+  }
+
+  getRejectionOCI1: any = (start: any, end: any) => {
+    return this.http.post(`${this.baseUrl}/inspeksi/rejectionOCI1`, {startDate: start, endDate: end});
+  }
+
+  getRejectionOCI2: any = (start: any, end: any) => {
+    return this.http.post(`${this.baseUrl}/inspeksi/rejectionOCI2`, {startDate: start, endDate: end});
   }
 
 

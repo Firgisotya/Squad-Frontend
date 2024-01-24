@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { FlowReleaseOCI1Service } from 'src/app/services/flowRelease/flow-release-oci1.service';
+import { FlowReleaseService } from 'src/app/services/flowRelease/flow-release.service';
 
 import {
   ChartComponent,
@@ -40,7 +40,7 @@ export class GarfikReleaseComponent {
   public chartRelease: Partial<ChartRelease> | any;
 
   constructor(
-    private appService: FlowReleaseOCI1Service,
+    private appService: FlowReleaseService,
     private spinner: NgxSpinnerService
   ) { }
 

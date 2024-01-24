@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { FlowReleaseOCI1Service } from 'src/app/services/flowRelease/flow-release-oci1.service';
+import { FlowReleaseService } from 'src/app/services/flowRelease/flow-release.service';
 
 @Component({
   selector: 'app-flow-release-oci1',
@@ -10,7 +10,7 @@ import { FlowReleaseOCI1Service } from 'src/app/services/flowRelease/flow-releas
 export class FlowReleaseOCI1Component {
 
   constructor(
-    private appService: FlowReleaseOCI1Service,
+    private appService: FlowReleaseService,
     private spinner: NgxSpinnerService
     ) { }
 

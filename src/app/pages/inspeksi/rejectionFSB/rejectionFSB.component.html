@@ -102,14 +102,35 @@
     <!-- <canvas width="1200px" id="canvasRejection"></canvas> -->
 
     <apx-chart
-    [series]="chartReject?.series"
+    [series]="chartReject?.seriesReject"
     [chart]="chartReject?.chart"
-    [yaxis]="chartReject?.yaxis"
+    [yaxis]="chartReject?.yaxisReject"
     [xaxis]="chartReject?.xaxis"
-    [labels]="chartReject?.labels"
+    [labels]="chartReject?.labelsReject"
     [stroke]="chartReject?.stroke"
-    [title]="chartReject?.title"
-    [dataLabels]="chartReject?.dataLabels"
+    [title]="chartReject?.titleReject"
+    [dataLabels]="chartReject?.dataLabelsReject"
+    [colors]="chartReject?.colorReject"
+    [fill]="chartReject?.fill"
+    [tooltip]="chartReject?.tooltip"
+    [plotOptions]="chartReject?.plotOptions"
+  ></apx-chart>
+  </div>
+
+  <div
+    class="w-full overflow-x-auto mb-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+
+    <apx-chart
+    [series]="chartReject?.seriesInspeksi"
+    [chart]="chartReject?.chart"
+    [yaxis]="chartReject?.yaxisInspeksi"
+    [xaxis]="chartReject?.xaxis"
+    [labels]="chartReject?.labelsInspeksi"
+    [stroke]="chartReject?.stroke"
+    [title]="chartReject?.titleInspeksi"
+    [dataLabels]="chartReject?.dataLabelsInspeksi"
+    [colors]="chartReject?.colorInspeksi"
     [fill]="chartReject?.fill"
     [tooltip]="chartReject?.tooltip"
     [plotOptions]="chartReject?.plotOptions"
@@ -140,11 +161,6 @@
             Tanggal
           </th>
           <th
-            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70"
-          >
-            Quantity Reject
-          </th>
-          <th
             class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-collapse border-solid shadow-none dark:border-white/40 dark:text-white tracking-none whitespace-nowrap text-black opacity-70"
           >
             Quantity Finish Good
@@ -153,6 +169,26 @@
             class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-collapse border-solid shadow-none dark:border-white/40 dark:text-white tracking-none whitespace-nowrap text-black opacity-70"
           >
             Quantity Inspection
+          </th>
+          <th
+            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70"
+          >
+            Quantity Reject
+          </th>
+          <th
+            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70"
+          >
+            Quantity After Inspection
+          </th>
+          <th
+            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70"
+          >
+            Quantity Release
+          </th>
+          <th
+            class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-black opacity-70"
+          >
+            Level Inspection
           </th>
         </tr>
       </thead>
@@ -191,7 +227,7 @@
             <p
               class="mb-0 px-6 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
             >
-              {{ item.total_reject }}
+              {{ item.total_finishgood || 0 }}
             </p>
           </td>
           <td
@@ -200,7 +236,7 @@
             <p
               class="mb-0 px-6 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
             >
-              {{ item.total_finishgood }}
+              {{ item.qty_inspeksi || 0 }}
             </p>
           </td>
           <td
@@ -209,7 +245,34 @@
             <p
               class="mb-0 px-6 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
             >
-              {{ item.qty_inspeksi }}
+              {{ item.total_reject  || 0}}
+            </p>
+          </td>
+          <td
+            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
+          >
+            <p
+              class="mb-0 px-6 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
+            >
+              {{ item.fg_after_inspect || 0 }}
+            </p>
+          </td>
+          <td
+            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
+          >
+            <p
+              class="mb-0 px-6 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
+            >
+              {{ item.qty_release || 0 }}
+            </p>
+          </td>
+          <td
+            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent"
+          >
+            <p
+              class="mb-0 px-6 text-xs font-semibold leading-tight dark:text-white dark:opacity-80"
+            >
+              {{ item.level_inspeksi || 0 }}%
             </p>
           </td>
         </tr>
