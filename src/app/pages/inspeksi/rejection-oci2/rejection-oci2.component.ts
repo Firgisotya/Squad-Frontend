@@ -94,6 +94,12 @@ export class RejectionOCI2Component {
 
   FilterRangeDate() {
     this.spinner.show();
+    this.x_rejection = [];
+    this.y_rejection = [];
+    this.z_rejection = [];
+    this.x_inspeksi = [];
+    this.y_inspeksi = [];
+    this.z_inspeksi = [];
     this.selectedStart = this.filterDate.value.start;
     this.selectedEnd = this.filterDate.value.end;
     this.appService.getRejectionOCI2(this.selectedStart, this.selectedEnd).subscribe((res: any) => {

@@ -63,26 +63,27 @@
     </div>
   </form>
 
-    <apx-chart
-      [series]="chart?.seriesReject"
-      [chart]="chart?.chart"
-      [yaxis]="chart?.yaxisReject"
-      [xaxis]="chart?.xaxis"
-      [labels]="chart?.labelsReject"
-      [stroke]="chart?.stroke"
-      [title]="chart?.titleReject"
-      [dataLabels]="chart?.dataLabelsReject"
-      [fill]="chart?.fill"
-      [colors]="chart?.colorReject"
-      [tooltip]="chart?.tooltip"
-      [plotOptions]="chart?.plotOptions"
-    ></apx-chart>
+  <apx-chart *ngIf="chart"
+  [series]="chart?.seriesReject"
+  [chart]="chart?.chart"
+  [yaxis]="chart?.yaxisReject"
+  [xaxis]="chart?.xaxis"
+  [labels]="chart?.labelsReject"
+  [stroke]="chart?.stroke"
+  [title]="chart?.titleReject"
+  [dataLabels]="chart?.dataLabelsReject"
+  [fill]="chart?.fill"
+  [colors]="chart?.colorReject"
+  [tooltip]="chart?.tooltip"
+  [plotOptions]="chart?.plotOptions"
+></apx-chart>
   </div>
 
   <div
     class="w-full overflow-x-auto mb-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
   >
     <apx-chart
+    *ngIf="chart"
       [series]="chart?.seriesInspeksi"
       [chart]="chart?.chart"
       [yaxis]="chart?.yaxisInspeksi"

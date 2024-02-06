@@ -68,14 +68,14 @@ export class RejectionOCI1Component {
   ngOnInit() {
     this.spinner.show();
 
-    
+
     this.appService.getRejectionOCI1(this.selectedStart, this.selectedEnd).subscribe((res: any) => {
       this.dt_rejection = res.data;
       console.log(this.dt_rejection);
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.lotno);
-        this.y_rejection.push(element.total_reject);
-        this.z_rejection.push(element.defect);
+        this.y_rejection.push(Number(element.total_reject));
+        this.z_rejection.push(Number(element.defect));
         this.x_inspeksi.push(element.lotno);
         this.y_inspeksi.push(element.feeding);
         this.z_inspeksi.push(parseFloat(element.level_inspeksi));
@@ -83,19 +83,23 @@ export class RejectionOCI1Component {
 
       this.spinner.hide();
       this.Chart();
-      
+
     });
 
     this.filterDate = new FormGroup({
       start: new FormControl(''),
       end: new FormControl(''),
     });
-
-
   }
 
   FilterRangeDate() {
     this.spinner.show();
+    this.x_rejection = [];
+    this.y_rejection = [];
+    this.z_rejection = [];
+    this.x_inspeksi = [];
+    this.y_inspeksi = [];
+    this.z_inspeksi = [];
     this.selectedStart = this.filterDate.value.start;
     this.selectedEnd = this.filterDate.value.end;
     this.appService.getRejectionOCI1(this.selectedStart, this.selectedEnd).subscribe((res: any) => {
@@ -103,8 +107,8 @@ export class RejectionOCI1Component {
       console.log(this.dt_rejection);
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.lotno);
-        this.y_rejection.push(element.total_reject);
-        this.z_rejection.push(element.defect);
+        this.y_rejection.push(Number(element.total_reject));
+        this.z_rejection.push(Number(element.defect));
         this.x_inspeksi.push(element.lotno);
         this.y_inspeksi.push(element.feeding);
         this.z_inspeksi.push(element.level_inspeksi);
@@ -112,11 +116,11 @@ export class RejectionOCI1Component {
 
       this.spinner.hide();
       this.Chart();
-      
+
     });
   }
 
-  ResetFilter(){
+  ResetFilter() {
     this.spinner.show();
     this.x_rejection = [];
     this.y_rejection = [];
@@ -129,8 +133,8 @@ export class RejectionOCI1Component {
       console.log(this.dt_rejection);
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.lotno);
-        this.y_rejection.push(element.total_reject);
-        this.z_rejection.push(element.defect);
+        this.y_rejection.push(Number(element.total_reject));
+        this.z_rejection.push(Number(element.defect));
         this.x_inspeksi.push(element.lotno);
         this.y_inspeksi.push(element.feeding);
         this.z_inspeksi.push(element.level_inspeksi);
@@ -138,11 +142,10 @@ export class RejectionOCI1Component {
 
       this.spinner.hide();
       this.Chart();
-      
+
     });
   }
 
-  
   Chart() {
     this.chart = {
       seriesReject: [
@@ -197,7 +200,7 @@ export class RejectionOCI1Component {
           borderWidth: 1,
           borderColor: "#fff"
         },
-        formatter: function(val: any, opts: any) {
+        formatter: function (val: any, opts: any) {
           return val.toFixed(4) + "%";
         }
       },
@@ -212,7 +215,7 @@ export class RejectionOCI1Component {
           borderWidth: 1,
           borderColor: "#fff"
         },
-        
+
       },
       labelsReject: this.x_rejection,
       labelsInspeksi: this.x_inspeksi,
@@ -227,7 +230,7 @@ export class RejectionOCI1Component {
             text: "Bottle"
           },
           labels: {
-            formatter: function(val: any) {
+            formatter: function (val: any) {
               return val.toFixed(0);
             }
           }
@@ -238,7 +241,7 @@ export class RejectionOCI1Component {
             text: "Defect(%)"
           },
           labels: {
-            formatter: function(val: any) {
+            formatter: function (val: any) {
               return val.toFixed(4) + "%";
             }
           },
@@ -250,18 +253,18 @@ export class RejectionOCI1Component {
             text: "Bottle"
           },
           labels: {
-            formatter: function(val: any) {
+            formatter: function (val: any) {
               return val.toFixed(0);
             }
           }
         },
-        { 
+        {
           opposite: true,
           title: {
             text: "Level Inspeksi(%)"
           },
           labels: {
-            formatter: function(val: any) {
+            formatter: function (val: any) {
               return val.toFixed(1) + "%";
             },
           },
@@ -269,7 +272,7 @@ export class RejectionOCI1Component {
           min: 2.0,
         }
       ]
-  }
+    } 
   }
 
 

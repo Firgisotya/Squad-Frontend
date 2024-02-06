@@ -8,8 +8,8 @@ export class FlowReleaseService {
 
   constructor(private http: HttpClient) { }
 
-  private baseUrl = "http://192.168.143.26:3116";
-  // private baseUrl = "http://192.168.9.47:3116";
+  // private baseUrl = "http://192.168.143.26:3116";
+  private baseUrl = "http://192.168.9.47:3116";
 
   getFlowReleaseOCI1: any = () => {
     return this.http.get(`${this.baseUrl}/flow-release/flow-release-oci1`);

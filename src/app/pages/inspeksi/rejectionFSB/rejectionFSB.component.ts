@@ -120,6 +120,9 @@ export class RejectionFSBComponent {
       this.x_rejection = [];
       this.y_rejection = [];
       this.z_rejection = [];
+      this.x_inspeksi = [];
+      this.y_inspeksi = [];
+      this.z_inspeksi = [];
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.new_lotno);
         this.y_rejection.push(element.total_reject | 0);
@@ -146,6 +149,9 @@ export class RejectionFSBComponent {
       this.x_rejection = [];
       this.y_rejection = [];
       this.z_rejection = [];
+      this.x_inspeksi = [];
+      this.y_inspeksi = [];
+      this.z_inspeksi = [];
       this.dt_rejection.forEach((element: any) => {
         this.x_rejection.push(element.new_lotno);
         this.y_rejection.push(element.total_reject | 0);
